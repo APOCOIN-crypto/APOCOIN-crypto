@@ -110,11 +110,98 @@
 						<div class="col-6 col-12-narrower">
 
 							<section class="box special">
-								<span class="image featured"><img src="images/pic03.jpg" alt="" /></span>
-								<h3>Accumsan integer</h3>
-								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
-								<ul class="actions special">
-									<li><a href="#" class="button alt">Learn More</a></li>
+								<div id="smart-button-container">
+									<div style="text-align: center;">
+									  <div style="margin-bottom: 1.25rem;">
+										<p>DONACIONES</p>
+										<select id="item-options"><option value="DONACION" price="2">DONACION - 2 EUR</option><option value="DONACION" price="5">DONACION - 5 EUR</option><option value="DONACION" price="8">DONACION - 8 EUR</option><option value="DONACION" price="10">DONACION - 10 EUR</option><option value="DONACION" price="50">DONACION - 50 EUR</option><option value="DONACION" price="100">DONACION - 100 EUR</option></select>
+										<select style="visibility: hidden" id="quantitySelect"></select>
+									  </div>
+									<div id="paypal-button-container"></div>
+									</div>
+								  </div>
+								  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR" data-sdk-integration-source="button-factory"></script>
+								  <script>
+									function initPayPalButton() {
+									  var shipping = 0;
+									  var itemOptions = document.querySelector("#smart-button-container #item-options");
+								  var quantity = parseInt();
+								  var quantitySelect = document.querySelector("#smart-button-container #quantitySelect");
+								  if (!isNaN(quantity)) {
+									quantitySelect.style.visibility = "visible";
+								  }
+								  var orderDescription = 'DONACIONES';
+								  if(orderDescription === '') {
+									orderDescription = 'Item';
+								  }
+								  paypal.Buttons({
+									style: {
+									  shape: 'rect',
+									  color: 'blue',
+									  layout: 'vertical',
+									  label: 'paypal',
+									  
+									},
+									createOrder: function(data, actions) {
+									  var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
+									  var selectedItemPrice = parseFloat(itemOptions.options[itemOptions.selectedIndex].getAttribute("price"));
+									  var tax = (0 === 0) ? 0 : (selectedItemPrice * (parseFloat(0)/100));
+									  if(quantitySelect.options.length > 0) {
+										quantity = parseInt(quantitySelect.options[quantitySelect.selectedIndex].value);
+									  } else {
+										quantity = 1;
+									  }
+							  
+									  tax *= quantity;
+									  tax = Math.round(tax * 100) / 100;
+									  var priceTotal = quantity * selectedItemPrice + parseFloat(shipping) + tax;
+									  priceTotal = Math.round(priceTotal * 100) / 100;
+									  var itemTotalValue = Math.round((selectedItemPrice * quantity) * 100) / 100;
+							  
+									  return actions.order.create({
+										purchase_units: [{
+										  description: orderDescription,
+										  amount: {
+											currency_code: 'EUR',
+											value: priceTotal,
+											breakdown: {
+											  item_total: {
+												currency_code: 'EUR',
+												value: itemTotalValue,
+											  },
+											  shipping: {
+												currency_code: 'EUR',
+												value: shipping,
+											  },
+											  tax_total: {
+												currency_code: 'EUR',
+												value: tax,
+											  }
+											}
+										  },
+										  items: [{
+											name: selectedItemDescription,
+											unit_amount: {
+											  currency_code: 'EUR',
+											  value: selectedItemPrice,
+											},
+											quantity: quantity
+										  }]
+										}]
+									  });
+									},
+									onApprove: function(data, actions) {
+									  return actions.order.capture().then(function(details) {
+										alert('Transaction completed by ' + details.payer.name.given_name + '!');
+									  });
+									},
+									onError: function(err) {
+									  console.log(err);
+									},
+								  }).render('#paypal-button-container');
+								}
+								initPayPalButton();
+								  </script>
 								</ul>
 							</section>
 
