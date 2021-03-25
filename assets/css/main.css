@@ -2085,9 +2085,9 @@
 		-webkit-appearance: none;
 		-ms-appearance: none;
 		appearance: none;
-		background-color: #130b5a;
+		background-color: #dddaf7;
 		border-radius: 6px;
-		border: solid 1px #e5e5e5;
+		border: solid 1px #0e4df8d2;
 		color: inherit;
 		display: block;
 		outline: 0;
@@ -2401,7 +2401,7 @@
 		}
 
 		.icon.major {
-			background: #666;
+			background: rgb(89, 85, 100);
 			border-radius: 100%;
 			color: #ffffff;
 			cursor: default;
