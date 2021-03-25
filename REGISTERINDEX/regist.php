@@ -1,4 +1,14 @@
+<?php
+  $servidor="localhost";	
+  $usuario="root";
+  $clave="";
+  $baseDeDatos="formularioregistro";
 
+   $enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
+   if(!$enlace){
+	   echo"Error en la conexion con el servidor ApoCoin"
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
