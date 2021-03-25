@@ -28,9 +28,9 @@ $sql="INSERT INTO datos VALUES('$Nombre',
                                '$Sexo')";
 $ejecutar=mysql_query($sql);
 if(!$ejecutar){
-  echo "Hubo Algun Error";
+  echo"Hubo Algun Error";
 }else {
-  echo "Datos Guardados Correctamente"<br><a href='index.html'>Volver</a>"
+  echo"Datos Guardados Correctamente"<br><a href='index.html'>Volver</a>"
 }
 
 
