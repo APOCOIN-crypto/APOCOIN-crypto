@@ -101,7 +101,7 @@
 	}
 
 	body, input, select, textarea {
-		color: #130b5a;
+		color: #181255;
 		font-family: "Source Sans Pro", sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
@@ -137,7 +137,7 @@
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #130b5a;
+		color: #D4AF37;
 		font-weight: 300;
 		line-height: 1em;
 		margin: 0 0 0.5em 0;
