@@ -1,6 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-dogeland.io	TRUE	/	FALSE	1999999999	PHPSESSID	63b816e3e88426ed04aaa017597dbd52
-.dogeland.io	TRUE	/	FALSE	1999999999	__cfduid	dce1f8cff341beee9ad8be127c74a02d81616797234
-dogeland.io	TRUE	/	FALSE	1999999999	SameSite	Lax
-
